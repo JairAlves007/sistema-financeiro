@@ -186,4 +186,8 @@
   .finances-container-right form button {
     width: 120px;
   }
+
+  .finances-container-left .finances-cards .card .card-actions {
+    justify-content: center;
+  }  
 }
