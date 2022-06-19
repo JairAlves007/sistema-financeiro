@@ -101,6 +101,8 @@ function populateOnclickDelete() {
 	});
 }
 
+infos.style.display = "none";
+
 document.addEventListener("DOMContentLoaded", () => {
 	recalculateMoney();
 
