@@ -31,7 +31,7 @@ const finances = localStorage.getItem("finances")
 	? JSON.parse(localStorage.getItem("finances"))
 	: [];
 let amountMoney = localStorage.getItem("amountMoney") ? +localStorage.getItem("amountMoney") : 0;
-let btnDeletes;
+let btnDeletes = document.querySelectorAll(".card .card-actions .action.delete");
 
 while (!amountMoney) {
 	amountMoney = +prompt("Quantos reais você tem disponível?");
