@@ -4,11 +4,13 @@ const cardsContainer = document.querySelector(
 const statusMoney = document.querySelector(
 	".finances-container .finances-container-left .status-money"
 );
+const infos = document.getElementById("infos");
+const closeModal = document.getElementById("close-modal");
+const inputMonth = document.querySelector("input[name=month]");
 
 const date = new Date();
 const currentMonth = String(date.getMonth() + 1).padStart(2, "0");
 const currentYear = date.getFullYear();
-document.querySelector('input[type=month]').min = `${currentYear}-${currentMonth}`;
 
 const form = document.forms[0];
 const months = [
@@ -25,9 +27,16 @@ const months = [
 	"Novembro",
 	"Dezembro"
 ];
-const finances = localStorage.getItem("finances") ? JSON.parse(localStorage.getItem("finances")) : [];
-let amountMoney = localStorage.getItem("amountMoney") ?? 1202.25;
+const finances = localStorage.getItem("finances")
+	? JSON.parse(localStorage.getItem("finances"))
+	: [];
+let amountMoney = localStorage.getItem("amountMoney") ?? 0;
 let btnDeletes;
+
+while (!amountMoney) {
+	amountMoney = prompt("Quantos reais você tem disponível?");
+	localStorage.setItem("amountMoney", amountMoney);
+}
 
 function populateCards() {
 	finances.forEach(item => {
@@ -78,13 +87,12 @@ function handleDelete(id) {
 	finances.splice(removeIndex, 1);
 
 	if (finances.length <= 0) {
-		localStorage.removeItem('finances');
+		localStorage.removeItem("finances");
 	} else {
-		localStorage.setItem('finances', JSON.stringify(finances));
+		localStorage.setItem("finances", JSON.stringify(finances));
 	}
 
 	cardRemove.style.display = "none";
-	
 }
 
 function populateOnclickDelete() {
@@ -107,6 +115,7 @@ if (form) {
 
 		if (
 			event.target.title.value.trim() === "" ||
+			event.target.type.value.trim() === "" ||
 			event.target.money.value.trim() === "" ||
 			event.target.month.value.trim() === ""
 		) {
@@ -175,3 +184,34 @@ if (form) {
 		populateOnclickDelete();
 	};
 }
+
+if (inputMonth) {
+	inputMonth.onfocus = event => {
+		event.target.type = "month";
+		event.target.min = `${currentYear}-${currentMonth}`;
+	};
+
+	inputMonth.onblur = event => {
+		event.target.type = "text";
+		event.target.removeAttribute("min");
+	};
+}
+
+if (!localStorage.getItem("closeModal")) {
+	localStorage.setItem("closeModal", "false");
+}
+
+closeModal.onclick = () => {
+	localStorage.setItem("closeModal", "true");
+	infos.style.display = "none";
+};
+
+if (
+	!localStorage.getItem("closeModal") ||
+	localStorage.getItem("closeModal") === "false"
+) {
+	infos.style.display = "flex";
+} else {
+	infos.style.display = "none";
+}
+// localStorage.clear();

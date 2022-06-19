@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./icons/icon.png">
-  <link rel="stylesheet" href="./styles/reset.css">
-  <link rel="stylesheet" href="./styles/styles.css">
-  <script src="./js/scripts.js" defer></script>
-  <title>Sistema Financeiro | Jair Alves</title>
-</head>
-<body>
-  <div class="finances-container">
-    <div class="finances-container-left">
-      <div class="finances-header">
-        <h1 class="title">Sistema Financeiro</h1>
-        <img class="icon-lg" src="./icons/money.svg" alt="icon money">
-      </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="./icons/icon.png" />
+		<link rel="stylesheet" href="./styles/reset.css" />
+		<link rel="stylesheet" href="./styles/styles.css" />
+		<script src="./js/scripts.js" defer></script>
+		<title>Sistema Financeiro | Jair Alves</title>
+	</head>
+	<body>
+		<div class="finances-container">
+			<div class="finances-container-left">
+				<div class="finances-header">
+					<h1 class="title">Sistema Financeiro</h1>
+					<img class="icon-lg" src="./icons/money.svg" alt="icon money" />
+				</div>
 
-      <div class="status-money"></div>
+				<div class="status-money"></div>
 
-      <div class="finances-cards"></div>
-    </div>
-    <div class="finances-container-right">
-      <form>
-        <input type="text" name="title" placeholder="Título da compra">
-        <input type="number" name="money" step="any" placeholder="Dinheiro">
-        <select name="type">
-          <option value="capital">Capital</option>
-          <option value="expense">Despesa</option>
-        </select>
-        <input type="month" name="month" min="2022-09">
-        <button type="submit">Adicionar</button>
-      </form>
-    </div>
-  </div>
-  <p class="paragraph footer">
-    Projeto criado por Jair Alves &copy;
-  </p>
-</body>
+				<div class="finances-cards"></div>
+			</div>
+			<div class="finances-container-right">
+				<form>
+					<input type="text" name="title" placeholder="Título da finança" />
+					<input
+						type="number"
+						name="money"
+						step="any"
+						placeholder="Dinheiro da finança"
+					/>
+					<select name="type">
+						<option value="">Selecione o tipo</option>
+						<option value="capital">Capital</option>
+						<option value="expense">Despesa</option>
+					</select>
+					<input type="type" name="month" placeholder="Data da finança" />
+					<button type="submit">Adicionar</button>
+				</form>
+			</div>
+		</div>
+		<p class="paragraph footer">Projeto criado por Jair Alves &copy;</p>
+
+		<div id="infos">
+			<h4>
+				Para uma melhor experiência, adicione este site na sua tela inicial!
+			</h4>
+
+			<span id="close-modal">&times;</span>
+		</div>
+	</body>
 </html>
