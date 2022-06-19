@@ -34,7 +34,7 @@ let amountMoney = localStorage.getItem("amountMoney") ?? 0;
 let btnDeletes;
 
 while (!amountMoney) {
-	amountMoney = prompt("Quantos reais você tem disponível?");
+	amountMoney = +prompt("Quantos reais você tem disponível?");
 	localStorage.setItem("amountMoney", amountMoney);
 }
 
@@ -139,9 +139,9 @@ if (form) {
 		};
 
 		if (data.type === "capital") {
-			amountMoney += +data.money;
+			amountMoney += parseFloat(data.money);
 		} else {
-			amountMoney -= +data.money;
+			amountMoney -= parseFloat(data.money);
 		}
 
 		localStorage.setItem("amountMoney", amountMoney);
@@ -191,11 +191,6 @@ if (inputMonth) {
 	inputMonth.onfocus = event => {
 		event.target.type = "month";
 		event.target.min = `${currentYear}-${currentMonth}`;
-	};
-
-	inputMonth.onblur = event => {
-		event.target.type = "text";
-		event.target.removeAttribute("min");
 	};
 }
 
