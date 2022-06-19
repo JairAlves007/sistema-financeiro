@@ -30,13 +30,13 @@ const months = [
 const finances = localStorage.getItem("finances")
 	? JSON.parse(localStorage.getItem("finances"))
 	: [];
-let amountMoney = localStorage.getItem("amountMoney") ? +localStorage.getItem("amountMoney") : 0;
+let amountMoney = +localStorage.getItem("amountMoney");
 let btnDeletes = document.querySelectorAll(".card .card-actions .action.delete");
 
-while (!amountMoney) {
+/*while (!amountMoney) {
 	amountMoney = +prompt("Quantos reais você tem disponível?");
 	localStorage.setItem("amountMoney", amountMoney);
-}
+}*/
 
 function populateCards() {
 	finances.forEach(item => {
@@ -86,11 +86,11 @@ function handleDelete(id) {
 
 	finances.splice(removeIndex, 1);
 
-	if (finances.length <= 0) {
+	/*if (finances.length <= 0) {
 		localStorage.removeItem("finances");
-	} else {
+	} else {*/
 		localStorage.setItem("finances", JSON.stringify(finances));
-	}
+	//}
 
 	cardRemove.style.display = "none";
 }
